@@ -22,6 +22,7 @@
             var state = document.register.state.value
 
 
+
             if (nome == 0) {
                 window.alert("Informe seu nome!");
                 document.register.nome.focus();
@@ -46,6 +47,10 @@
                 window.alert("Informe seu cpf!");
                 document.register.cpf.focus();
                 return false;
+            }  else if (!document.register.web.checked && !document.register.bd.checked && !document.register.mobile.checked) {
+                window.alert("Informe pelo menos uma area");
+                document.register.web.focus();
+                return false;
             } else if (city == 0) {
                 window.alert("Informe sua Cidade!");
                 document.register.city.focus();
@@ -54,11 +59,7 @@
                 window.alert("Informe seu Estado!");
                 document.register.state.focus();
                 return false;
-            } else if (!document.register.web.checked && !document.register.bd.checked && !document.register.mobile.checked) {
-                window.alert("Informe pelo menos uma area");
-                document.register.web.focus();
-                return false;
-            } else if (!document.register.mas.checked && !document.register.fem.checked) {
+            }  else if (!document.register.mas.checked && !document.register.fem.checked) {
                 window.alert("Informe seu sexo");
                 document.register.mas.focus();
                 return false;
@@ -82,15 +83,14 @@
 
 
 
-
         }
     </script>
 
 </head>
 
 <body>
-
-    <form name="register" id="MyForm" action="validate.html" onsubmit="return valida();" method="post">
+<!--- --->
+    <form name="register" id="MyForm" action="submit.php" onsubmit="return valida();" method="get">
         <h1 class="form">Cadastro</h1>
         <div class="form-group">
             <label for="nome" class="control-label col-sm-1"> Nome </label>
@@ -158,29 +158,30 @@
 
         <label class="control-label col-sm-1">Cidade: </label>
         <div id="cityList">
-            <select name="city">
-              <option  value="0"> </option>
-               <option  value="1"> Joao Monlevade </option>
-               <option  value="2"> Salvador </option>
-               <option  value="3"> Sao Paulo </option>
-               <option  value="4"> Rio de Janeiro </option>
-               <option  value="5"> Rio branco </option>
-               <option  value="6"> Goiania </option>
+            <select name="city" onchange="document.getElementById('cityText').value=this.options[this.selectedIndex].text">
+         <option  value="0"> </option>
+         <option  value="1"> Joao Monlevade </option>
+         <option  value="2"> Salvador </option>
+         <option  value="3"> Sao Paulo </option>
+         <option  value="4"> Rio de Janeiro </option>
+         <option  value="5"> Rio branco </option>
+         <option  value="6"> Goiania </option>
        </select><br><br>
         </div>
-
+<input type="hidden" name="cityText" id="cityText" value="" />
         <label class="control-label col-sm-1">Estado:</label>
         <div id="cityList">
-            <select name="city">
-              <option  value="0"> </option>
-  <option  value="1"> Minas Gerais</option>
-  <option  value="2"> Bahia </option>
-  <option  value="3"> Sao Paulo </option>
-  <option  value="4"> Rio de Janeiro  </option>
-  <option  value="5"> Acre </option>
-  <option  value="6"> Goias </option>
+            <select name="state" onchange="document.getElementById('stateText').value=this.options[this.selectedIndex].text">
+         <option  value="0"> </option>
+         <option  value="1"> Minas Gerais</option>
+         <option  value="2"> Bahia </option>
+         <option  value="3"> Sao Paulo </option>
+         <option  value="4"> Rio de Janeiro  </option>
+         <option  value="5"> Acre </option>
+         <option  value="6"> Goias </option>
        </select><br><br>
         </div>
+        <input type="hidden" name="stateText" id="stateText" value="" />
         <br>
         <div id="form-group">
             <label class="control-label col-sm-1"> Genero:  </label>
