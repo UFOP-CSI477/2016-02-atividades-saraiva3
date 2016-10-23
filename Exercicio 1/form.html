@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css"
+      href="style.css" />
+  </head>
+  <body class="generica">
+
+
+    <form name="register" method="get" id= "MyForm" action="validate.html">
+
+  <h1 class="form">Cadastro</h1>
+
+      <label>Nome:</label> <input type="text" name="name"/><br><br>
+      <label>  Rua: </label><input type="text" name="rua"/><br><br>
+      <label>Numero: </label><input type="text" name="numero"/><br><br>
+      <label>Complemento: </label><input type="text" name="complemento"/><br><br>
+      <label>Telefone: </label><input type="text" name="telefone"/><br> <br>
+      <label>Area:</label><br><label><input type="checkbox" name="area"/>  Web</label> <br>
+      <label><input type="checkbox" name="area"/>  BD</label> <br>
+      <label><input type="checkbox" name="area"/>  Mobile </label><br><br>
+
+      <label>Cidade: </label><div id="cityList">
+        <select name="city">
+          <option  value="1"> Joao Monlevade </option>
+          <option  value="1"> Salvador </option>
+          <option  value="1"> Sao Paulo </option>
+          <option  value="1"> Rio de Janeiro </option>
+          <option  value="1"> Rio branco </option>
+          <option  value="1"> Goiania </option>
+        </select><br><br>
+      </div>
+      <label>Estado:</label> <div id="cityList">
+        <select name="city">
+          <option  value="1"> Minas Gerais</option>
+          <option  value="1"> Bahia </option>
+          <option  value="1"> Sao Paulo </option>
+          <option  value="1"> Rio de Janeiro  </option>
+          <option  value="1"> Acre </option>
+          <option  value="1"> Goias </option>
+        </select><br><br>
+      </div>
+      <label>Genero:  </label><br><label><input type="radio" name="gender" value="F"> Feminino</label> <br>
+    <label>  <input type="radio" name="gender" value="M"> Masculino</label> <br>
+
+      <label>CEP:</label> <input type="text" name="cep"/><br><br>
+      <label>CPF: </label><input type="number" name="cpf" min="0" max="100" >  <br> <br>
+      <label>Usuario: </label><input type="text" name="user"/><br><br>
+      <label>Senha: </label><input type="password" name="password"/><br><br>
+      <label>Email: </label><input type="text" name="email"/><br><br>
+
+
+
+      <input type="submit" value = "Submeter" />
+      <input type="reset" value = "Limpar" />
+      <br>
+    </form>
+    <a  class="button "href="index.html">Voltar</a>
+  </body>
+</html>
