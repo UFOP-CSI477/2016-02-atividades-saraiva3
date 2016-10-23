@@ -3,14 +3,90 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Sistema de Cadastro UFOP</title>
 
-    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css" />
+
+    <title>Sistema de Cadastro UFOP</title>
+      <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+    <script>
+
+
+    function valida(){
+      var nome = document.register.nome.value.length;
+    var rua = document.register.rua.value.length
+    var numero = document.register.numero.value.length
+    var matricula = document.register.matricula.value.length
+    var cep = document.register.cep.value.length
+    var usuario = document.register.usuario.value.length
+    var senha = document.register.senha.value.length
+    var email = document.register.email.value.length
+
+    if(nome == 0){
+      window.alert("Informe seu nome!");
+      document.register.nome.focus();
+      return false;
+    }
+
+    else if(rua == 0){
+      window.alert("Informe sua rua!");
+      document.register.rua.focus();
+      return false;
+    }
+    else if(numero ==0){
+      window.alert("Informe o numero da casa!");
+      document.register.numero.focus();
+      return false;
+    }
+    else if(matricula == 0){
+      window.alert("Informe sua matricula!");
+      document.register.matricula.focus();
+      return false;
+    }
+    else if(cep == 0){
+      window.alert("Informe seu cep!");
+      document.register.cep.focus();
+      return false;
+    }
+    else if(!document.register.web.checked && !document.register.bd.checked && !document.register.mobile.checked){
+      window.alert("Informe pelo menos uma area");
+      document.register.web.focus();
+      return false;
+    }
+    else if(!document.register.mas.checked && !document.register.fem.checked){
+      window.alert("Informe seu sexo");
+      document.register.mas.focus();
+      return false;
+    }
+    else if(usuario == 0){
+      window.alert("Informe seu usuario!");
+      document.register.usuario.focus();
+      return false;
+    }
+    else if(senha == 0){
+      window.alert("Informe sua senha!");
+      document.register.senha.focus();
+      return false;
+    }
+    else if(senha < 8){
+      window.alert("Sua senha deve ter no minimo 8 caracteres!");
+      document.register.senha.focus();
+      return false;
+    }
+    else if(email == 0){
+      window.alert("Informe seu email!");
+      document.register.email.focus();
+      return false;
+    }
+
+
+
+    }
+    </script>
+
 </head>
 
 <body>
 
-    <form name="register" method="get" id="MyForm" action="validate.html">
+    <form name="register" id="MyForm" action="validate.html" onsubmit="return valida();"  method="post"  >
         <h1 class="form">Cadastro</h1>
         <div class="form-group">
             <label for="nome" class="control-label col-sm-1"> Nome </label>
@@ -19,7 +95,7 @@
             </div>
             <br>
         </div>
-        <div class="form-group">
+        <div class="form-group" name="teste">
             <label for="rua" class="control-label col-sm-1"> Rua </label>
             <div class="col-sm-2">
                 <input type="text" class="form-control" name="rua">
@@ -130,9 +206,8 @@
 
         <br> <br>
         <div class=" btn-group col-sm-6">
-            <input type="submit" class="btn  btn-success" value="Aceitar">
+            <input type="submit" class="btn  btn-success"  value="Submit">
             <input type="reset" class="btn  btn-danger " value="Limpar">
-
             <a class="btn btn-default " href="index.html">Voltar</a>
         </div>
         <br>
