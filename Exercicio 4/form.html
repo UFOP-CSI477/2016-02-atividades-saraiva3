@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="bootstrap.css" />
     <script>
         function valida() {
+
             var nome = document.register.nome.value.length
             var rua = document.register.rua.value.length
             var numero = document.register.numero.value.length
@@ -45,6 +46,14 @@
                 window.alert("Informe seu cpf!");
                 document.register.cpf.focus();
                 return false;
+            } else if (cpf < 11 || cpf > 11) {
+                window.alert("Seu cpf deve conter 11 digitos");
+                document.register.cpf.focus();
+                return false;
+            } else if (!document.register.web.checked && !document.register.bd.checked && !document.register.mobile.checked) {
+                window.alert("Informe pelo menos uma area");
+                document.register.web.focus();
+                return false;
             } else if (city == 0) {
                 window.alert("Informe sua Cidade!");
                 document.register.city.focus();
@@ -53,11 +62,7 @@
                 window.alert("Informe seu Estado!");
                 document.register.state.focus();
                 return false;
-            } else if (!document.register.web.checked && !document.register.bd.checked && !document.register.mobile.checked) {
-                window.alert("Informe pelo menos uma area");
-                document.register.web.focus();
-                return false;
-            } else if (!document.register.mas.checked && !document.register.fem.checked) {
+            }  else if (!document.register.mas.checked && !document.register.fem.checked) {
                 window.alert("Informe seu sexo");
                 document.register.mas.focus();
                 return false;
@@ -172,12 +177,12 @@
         <div id="cityList">
             <select name="state">
               <option  value="0"> </option>
-  <option  value="1"> Minas Gerais</option>
-  <option  value="2"> Bahia </option>
-  <option  value="3"> Sao Paulo </option>
-  <option  value="4"> Rio de Janeiro  </option>
-  <option  value="5"> Acre </option>
-  <option  value="6"> Goias </option>
+              <option  value="1"> Minas Gerais</option>
+              <option  value="2"> Bahia </option>
+              <option  value="3"> Sao Paulo </option>
+              <option  value="4"> Rio de Janeiro  </option>
+              <option  value="5"> Acre </option>
+              <option  value="6"> Goias </option>
        </select><br><br>
         </div>
         <br>
