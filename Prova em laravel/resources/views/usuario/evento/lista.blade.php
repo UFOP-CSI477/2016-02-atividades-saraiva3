@@ -113,15 +113,15 @@
       </tr>
       </thead>
       <tbody>
-      {!! $i=0 !!}
+    
       @foreach($eventos as $evento)
 
           <tr>
-            <td>{!! $nomes[$i]!!}</td>
-            <td>{!! $precos[$i]!!}</td>
+            <td>{!! $evento->evento()->value('nome')!!}</td>
+            <td>{!! $evento->evento()->value('preco')!!}</td>
             <td>{!! $evento->data !!}</td>
           </tr>
-     {!! $i +=1 !!}    
+     
       @endforeach
 
       </tbody>
