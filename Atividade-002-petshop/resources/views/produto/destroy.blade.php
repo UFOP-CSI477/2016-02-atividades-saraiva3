@@ -8,8 +8,11 @@
                     <div class="panel-heading">Deletar produto</div>
 
                     <div class="panel-body">
-                      Carrinho apagado sucesso
+                      Carrinho apagado com sucesso!
+
                     </div>
+                    <a class="btn btn-xs btn-warning" href="{{ url('produtos') }}">Comprar mais</a>
+
                 </div>
             </div>
         </div>

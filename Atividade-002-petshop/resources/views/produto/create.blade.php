@@ -9,7 +9,7 @@
 
                     <div class="panel-body">
                       <form method="post" action ="{{url('/produtos')}}">
-                      
+
                         {{csrf_field()}}
                         <div class="form-group">
                           <label for="nome">Nome:</label>
@@ -20,7 +20,7 @@
                          <input type="text" class="form-control" name="preco"/>
                         </div>
                         <div class="form-group">
-                          <label for="imagem">Imagem:</label>
+                          <label for="imagem">Imagem(nome do arquivo com extensao):</label>
                       <input type="text" class="form-control" name="imagem" />
                         </div>
                         <input type="submit" value="Salvar"/>

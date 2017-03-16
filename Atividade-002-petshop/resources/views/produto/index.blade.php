@@ -43,20 +43,20 @@
                                 <tr>
                                     <td>{!! $produto->nome !!}</td>
                                     <td>R$ {!! $produto->preco !!}</td>
-                                    <td>{!! $produto->imagem !!}</td>
+                                    <td> <img src ="images/{{$produto->imagem }}"  class = "img-responsive" style="width:40%" alt="Image"></td>
+
 
                                         <td>
                                             @if(\Illuminate\Support\Facades\Auth::check())
                                                 @if(Auth::user()->type != 1)
                                                 <a class="btn btn-xs btn-info" href="{{ url('produtos/' . $produto->id . '/edit') }}">Editar</a>
                                                 <a class="btn btn-xs btn-info" href="{{ url('produtos/destroy/' . $produto->id ) }}">Excluir</a>
-                                                  <a class="btn btn-xs btn-info" href="{{ url('add/' . $produto->id  ) }}">Carrinho</a>
+                                                  <a class="btn btn-xs btn-info" href="{{ url('add/' . $produto->nome  ) }}">Carrinho</a>
                                                 @elseif(Auth::user()->type == 1)
                                                 <a class="btn btn-xs btn-info" href="{{ url('add/' .$produto->id) }}">Carrinho</a>
                                                 @endif
                                             @else
-
-                                              <label> Favor logar </label>
+                                              <label> Favor logar</label>
                                             @endif
                                         </td>
 

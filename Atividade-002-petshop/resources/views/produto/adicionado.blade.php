@@ -8,8 +8,11 @@
                     <div class="panel-heading"></div>
 
                     <div class="panel-body">
-                    Adicionado no carrinho 
+                    Adicionado no carrinho com sucesso!
+
                     </div>
+                    <a class="btn btn-xs btn-warning" href="{{ url('produtos') }}">Comprar mais</a>
+
                 </div>
             </div>
         </div>
