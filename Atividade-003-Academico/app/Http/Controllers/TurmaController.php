@@ -1,11 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Turma;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class TurmaController extends Controller
 {
+
+
+
+
+    public function __construct(){
+        //$this->middleware('auth', ['except' => 'index']);
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,9 +22,15 @@ class TurmaController extends Controller
      */
     public function index()
     {
-      $turmas = Turma::all();
-      return view('turmas.index')
-      ->with('turmas',$turmas);
+      if(Auth::user()->type == 1){
+          $turmas = Turma::all();
+          session(['nome' => Auth::user()->name]);
+
+        return view('turmas.index') -> with('turmas', $turmas);
+      }else{
+        session()->flash('error', 'Turma: acesso não autorizado!');
+        return redirect('/home');
+      }
     }
 
     /**
@@ -25,7 +40,7 @@ class TurmaController extends Controller
      */
     public function create()
     {
-          return view('turmas.create');
+        //
     }
 
     /**
@@ -36,9 +51,7 @@ class TurmaController extends Controller
      */
     public function store(Request $request)
     {
-      Turma::create($request->all());
-      return redirect('/turmas');
-        dd($request->all());
+        //
     }
 
     /**
@@ -60,8 +73,7 @@ class TurmaController extends Controller
      */
     public function edit($id)
     {
-      $estado = Turma::find($id);
-      return view('turma.edit')->with('turma', $turma);
+        //
     }
 
     /**
@@ -73,12 +85,7 @@ class TurmaController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $turma = Turma::find($id);
-      $turma->created_at = $request->created_at;
-
-      $turma->save();
-
-      return redirect('/turma');
+        //
     }
 
     /**
