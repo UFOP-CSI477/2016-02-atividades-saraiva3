@@ -66,7 +66,6 @@ class CidadeController extends Controller
     {
       $cidade = Cidade::find($id);
       $estado = Estado::find($cidade->estado_id);
-
       return view('cidades.show')->with('cidade', $cidade) ->with('estado', $estado);
 
     }

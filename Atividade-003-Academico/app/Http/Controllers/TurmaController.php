@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Turma;
+use App\Disciplina;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,9 @@ class TurmaController extends Controller
      */
     public function create()
     {
-        //
+      $disciplinas = Disciplina::all();
+       return view('turmas.create')->with('disciplinas', $disciplinas);
+
     }
 
     /**
@@ -51,7 +54,9 @@ class TurmaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Turma::create($request->all());
+      session()->flash('info', 'Turma adicionada com sucesso!');
+      return redirect('/turmas');
     }
 
     /**
@@ -62,7 +67,9 @@ class TurmaController extends Controller
      */
     public function show($id)
     {
-        //
+      $turma = Turma::find($id);
+      $disciplina = Disciplina::find($turma->disciplina_id);
+      return view('turmas.show')->with('disciplina', $disciplina)->with('turma', $turma);
     }
 
     /**
@@ -73,7 +80,12 @@ class TurmaController extends Controller
      */
     public function edit($id)
     {
-        //
+      $turma = Turma::find($id);
+      $disciplinas = Disciplina::all();
+       return view('turmas.edit')
+       ->with('turma', $turma)
+       ->with('disciplinas', $disciplinas);
+
     }
 
     /**
@@ -85,7 +97,13 @@ class TurmaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $turma = Turma::find($id);
+      $turma->nome = $request->nome;
+      $turma->disciplina_id = $request->disciplina_id;
+
+      $turma->save();
+
+      return redirect('/turmas');
     }
 
     /**
@@ -96,6 +114,8 @@ class TurmaController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Turma::destroy($id);
+      session()->flash('info', 'Turma apagada com sucesso  ');
+      return redirect('/turmas');
     }
 }

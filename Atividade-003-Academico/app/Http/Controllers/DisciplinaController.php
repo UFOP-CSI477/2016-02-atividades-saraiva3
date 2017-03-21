@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Disciplina;
-
+use App\Turma;
 use Illuminate\Support\Facades\Auth;
 
 class DisciplinaController extends Controller
@@ -110,7 +110,19 @@ class DisciplinaController extends Controller
      */
     public function destroy($id)
     {
+      $turma = Turma::where('disciplina_id',$id)->get();
+      if(count($turma) > 0){
+            session()->flash('warning', 'Turma cadastrada, nao pode ser apagado');
+                return redirect('/disciplinas');
+      }
+      else{
         Disciplina::destroy($id);
-		return redirect('/disciplinas');
+        session()->flash('info', 'Cidade apagada com sucesso  ');
+
+    return redirect('/disciplinas');
+
+
+      }
+
     }
 }

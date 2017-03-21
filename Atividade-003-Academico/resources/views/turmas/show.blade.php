@@ -7,9 +7,18 @@
 
 		{{ method_field('DELETE') }}
 		{{ csrf_field() }}
+		<div class="form-group">
+			<label for="nome">Nome: </label>
+			{{$turma->nome}}
+		</div>
+
+		<div class="form-group">
+			<label for="codigo">Disciplina: </label>
+			{{$disciplina->nome}}
+		</div>
 
 
-		<a href="/disciplinas" class="btn btn-primary">Voltar</a>
+		<a href="/turmas" class="btn btn-primary">Voltar</a>
 		<input type="submit" value="Excluir" class="btn btn-danger" />
 	</form>
 
